@@ -18,13 +18,13 @@ export class BlogService {
     return of(this.blogs);
   }
 
-  getBlog(id: string): Observable<Blog> {
+  getBlog(id: string): Observable<Blog | undefined> {
     const blog = this.blogs.find(b => b.id === id);
     return of(blog);
   }
 
   addBlog(blog: Blog): Observable<Blog> {
-    blog.id = (this.blogs.length + 1);
+    blog.id = (this.blogs.length + 1).toString();
     blog.upvotes = 0;
     blog.downvotes = 0;
     this.blogs.push(blog);
@@ -33,25 +33,27 @@ export class BlogService {
 
   searchBlogs(query: string): Observable<Blog[]> {
     const blogs = this.blogs.filter(b => {
-      const titleMatch = b.title.toLowerCase().includes(query.toLowerCase());
-      const authorMatch = b.author.toLowerCase().includes(query.toLowerCase());
-      const contentMatch = b.content.toLowerCase().includes(query.toLowerCase());
+      const titleMatch = b.title?.toLowerCase().includes(query.toLowerCase());
+      const authorMatch = b.author?.toLowerCase().includes(query.toLowerCase());
+      const contentMatch = b.content?.toLowerCase().includes(query.toLowerCase());
       return titleMatch || authorMatch || contentMatch;
     });
     return of(blogs);
   }
 
-  upvoteBlog(id: string): Observable<Blog> {
+  upvoteBlog(id: string): Observable<Blog | undefined> {
     const blog = this.blogs.find(b => b.id === id);
     if (blog) {
+      // @ts-ignore
       blog.upvotes++;
     }
     return of(blog);
   }
 
-  downvoteBlog(id: string): Observable<Blog> {
+  downvoteBlog(id: string): Observable<Blog | undefined> {
     const blog = this.blogs.find(b => b.id === id);
     if (blog) {
+      // @ts-ignore
       blog.downvotes++;
     }
     return of(blog);

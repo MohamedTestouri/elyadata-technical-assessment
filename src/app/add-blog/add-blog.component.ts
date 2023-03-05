@@ -11,8 +11,7 @@ export class AddBlogComponent {
   blog = { title: '', content: '', author: '', upvotes: 0, downvotes: 0 };
 
   constructor(private router: Router, private blogService: BlogService) {}
-
-  onSubmit() {
+  onSubmit(): void {
     this.blogService.addBlog(this.blog).subscribe(() => {
       this.router.navigate(['/blogs']);
     });
