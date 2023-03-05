@@ -7,9 +7,9 @@ import { Blog } from './blog';
 })
 export class BlogService {
   public blogs: Blog[] = [
-    { id: 1, title: 'Blog 1', author: 'John Doe', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', upvotes: 3, downvotes: 2 },
-    { id: 2, title: 'Blog 2', author: 'Jane Smith', content: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.', upvotes: 5, downvotes: 1 },
-    { id: 3, title: 'Blog 3', author: 'Bob Johnson', content: 'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi.', upvotes: 2, downvotes: 0 },
+    { id: '1', title: 'Blog 1', author: 'John Doe', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', upvotes: 3, downvotes: 2 },
+    { id: '2', title: 'Blog 2', author: 'Jane Smith', content: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.', upvotes: 5, downvotes: 1 },
+    { id: '3', title: 'Blog 3', author: 'Bob Johnson', content: 'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi.', upvotes: 2, downvotes: 0 },
   ];
 
   constructor() { }
