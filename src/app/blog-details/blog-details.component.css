@@ -1,0 +1,60 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.author {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.content {
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+}
+
+.upvote,
+.downvote {
+  font-size: 18px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.upvote:hover,
+.downvote:hover {
+  color: blue;
+}
+
+.upvote.active,
+.downvote.active {
+  color: green;
+  font-weight: bold;
+}
+
+.upvote.active:hover,
+.downvote.active:hover {
+  color: red;
+}
+
+.border-green {
+  border: 2px solid green;
+}
+
+.border-red {
+  border: 2px solid red;
+}
+

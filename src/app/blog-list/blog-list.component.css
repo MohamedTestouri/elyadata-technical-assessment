@@ -1,0 +1,13 @@
+.blog-preview {
+  border: 1px solid;
+  padding: 10px;
+}
+
+.blog-preview.green {
+  border-color: green;
+}
+
+.blog-preview.red {
+  border-color: red;
+}
+
