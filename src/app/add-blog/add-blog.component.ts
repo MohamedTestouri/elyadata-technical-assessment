@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { Blog } from '../blog';
 import { BlogService } from '../blog.service';
 
 @Component({
@@ -8,10 +9,11 @@ import { BlogService } from '../blog.service';
   styleUrls: ['./add-blog.component.css']
 })
 export class AddBlogComponent {
-  blog = { title: '', content: '', author: '', upvotes: 0, downvotes: 0 };
+  blog :Blog = {  id : 0, title: '', content: '', author: '', upvotes: 0, downvotes: 0 };
 
   constructor(private router: Router, private blogService: BlogService) {}
-  onSubmit(): void {
+
+  onSubmit() {
     this.blogService.addBlog(this.blog).subscribe(() => {
       this.router.navigate(['/blogs']);
     });

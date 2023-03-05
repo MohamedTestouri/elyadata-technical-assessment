@@ -1,37 +1,40 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { BlogService } from '../blog.service';
-import {Blog} from '../blog';
 
 @Component({
   selector: 'app-blog-details',
   templateUrl: './blog-details.component.html',
   styleUrls: ['./blog-details.component.css']
 })
-export class BlogDetailsComponent {
-  blog!: Blog | null;
+export class BlogDetailsComponent implements OnInit {
+  blog :any;
+  id:any;
+  
+  constructor(private route: ActivatedRoute, private blogService: 
+BlogService) {
+  const blogId = this.route.snapshot.paramMap.get('id');
+  }
 
-  constructor(private route: ActivatedRoute, private blogService: BlogService) {
-    const blogId = this.route.snapshot.paramMap.get('id')?.toString() || '';
-    this.blogService.getBlog(blogId).subscribe(blog => {
-      if (blog) {
-        this.blog = blog;
-      } else {
-        this.blog = null;
+  ngOnInit(): void {
+    this.id=this.route.snapshot.paramMap.get('id');
+    this.blogService.getBlog(this.id).subscribe({
+      next : (res)=>{
+        console.log(res);
+        this.blog = res;  
+        //redirection to list
+   
+      },error:(err)=>{
+        console.log(err)
       }
-    });
+    })
+  }
+  upvote() {
+    this.blog.upvotes++;
   }
 
-  upvote(): void{
-    if (this.blog) {
-      this.blog.upvotes++;
-    }
-  }
-
-  downvote(): void {
-    if (this.blog) {
-      this.blog.downvotes++;
-    }
+  downvote() {
+    this.blog.downvotes++;
   }
 }
 

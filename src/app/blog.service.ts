@@ -7,9 +7,9 @@ import { Blog } from './blog';
 })
 export class BlogService {
   public blogs: Blog[] = [
-    { id: '1', title: 'Blog 1', author: 'John Doe', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', upvotes: 3, downvotes: 2 },
-    { id: '2', title: 'Blog 2', author: 'Jane Smith', content: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.', upvotes: 5, downvotes: 1 },
-    { id: '3', title: 'Blog 3', author: 'Bob Johnson', content: 'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi.', upvotes: 2, downvotes: 0 },
+    { id: 1, title: 'Blog 1', author: 'John Doe', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', upvotes: 3, downvotes: 2 },
+    { id: 2, title: 'Blog 2', author: 'Jane Smith', content: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.', upvotes: 5, downvotes: 1 },
+    { id: 3, title: 'Blog 3', author: 'Bob Johnson', content: 'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi.', upvotes: 2, downvotes: 0 },
   ];
 
   constructor() { }
@@ -18,13 +18,15 @@ export class BlogService {
     return of(this.blogs);
   }
 
-  getBlog(id: string): Observable<Blog | undefined> {
-    const blog = this.blogs.find(b => b.id === id);
+  getBlog(id: Number): Observable<Blog  | null | undefined> {
+    const blog =     this.blogs.find(item => item.id == id);;
+
+
     return of(blog);
   }
 
-  addBlog(blog: Blog): Observable<Blog> {
-    blog.id = (this.blogs.length + 1).toString();
+  addBlog(blog: Blog): Observable<Blog | null | undefined> {
+    blog.id = (this.blogs.length + 1);
     blog.upvotes = 0;
     blog.downvotes = 0;
     this.blogs.push(blog);
@@ -33,28 +35,30 @@ export class BlogService {
 
   searchBlogs(query: string): Observable<Blog[]> {
     const blogs = this.blogs.filter(b => {
-      const titleMatch = b.title?.toLowerCase().includes(query.toLowerCase());
-      const authorMatch = b.author?.toLowerCase().includes(query.toLowerCase());
-      const contentMatch = b.content?.toLowerCase().includes(query.toLowerCase());
+      const titleMatch = b.title.toLowerCase().includes(query.toLowerCase());
+      const authorMatch = b.author.toLowerCase().includes(query.toLowerCase());
+      const contentMatch = b.content.toLowerCase().includes(query.toLowerCase());
       return titleMatch || authorMatch || contentMatch;
     });
     return of(blogs);
   }
 
-  upvoteBlog(id: string): Observable<Blog | undefined> {
+  upvoteBlog(id: Number): Observable<Blog  | null | undefined> {
     const blog = this.blogs.find(b => b.id === id);
     if (blog) {
-      // @ts-ignore
-      blog.upvotes++;
+
+      blog.upvotes= +  blog.upvotes+ 1
     }
     return of(blog);
   }
 
-  downvoteBlog(id: string): Observable<Blog | undefined> {
+  downvoteBlog(id: Number): Observable<Blog  | null | undefined> {
     const blog = this.blogs.find(b => b.id === id);
     if (blog) {
-      // @ts-ignore
-      blog.downvotes++;
+
+      blog.downvotes= + blog.downvotes + 1
+
+
     }
     return of(blog);
   }
@@ -84,7 +88,4 @@ addBlog(blog: any): Observable<any> {
 return this.http.post<any>(${this.apiUrl}/blogs, blog);
 }
 
-searchBlogs(query: string): Observable<any[]> {
-return this.http.get<any[]>(${this.apiUrl}/blogs?q=${query});
-}
 }*/
