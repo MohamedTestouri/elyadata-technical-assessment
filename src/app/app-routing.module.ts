@@ -7,7 +7,7 @@ import { BlogDetailsComponent } from './blog-details/blog-details.component';
 const routes: Routes = [
   { path: '', redirectTo: '/blogs', pathMatch: 'full' },
   { path: 'blogs', component: BlogListComponent },
-  { path: 'add-blog', component: AddBlogComponent },
+  { path: 'add', component: AddBlogComponent },
   { path: 'blogs/:id', component: BlogDetailsComponent },
 ];
 

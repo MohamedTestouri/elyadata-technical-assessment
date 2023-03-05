@@ -1,7 +1,8 @@
-<h1>Blogs</h1>
-
+<h1 class="blog-title">Blogs</h1>
 <input type="text" [(ngModel)]="searchTerm"
-placeholder="Search blogs...">
+       placeholder="Search blogs..." class="blog-search">
+<br/>
+<a [routerLink]="['/add']" class="read-more">Publish a post</a>
 <div class="blog-list">
   <div class="blog-preview" *ngFor="let blog of
 filteredBlogs()">
@@ -12,6 +13,6 @@ filteredBlogs()">
       <button (click)="upvote(blog)">UPVOTE({{blog.upvotes}})</button>
       <button (click)="downvote(blog)">DOWNVOTE({{blog.downvotes}})</button>
     </div>
-    <a [routerLink]="['/blogs', blog.id]">Continue reading</a>
+    <a [routerLink]="['/blogs', blog.id]" class="read-more">Continue reading</a>
   </div>
 </div>

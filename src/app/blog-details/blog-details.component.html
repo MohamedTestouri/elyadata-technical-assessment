@@ -1,9 +1,11 @@
-<div *ngIf="blog">
-  <h2>{{ blog.title }}</h2>
-  <p>{{ blog.content }}</p>
-  <p>By {{ blog.author }}</p>
-  <div class="vote-buttons">
 
+<div *ngIf="blog" class="blog-details">
+  <h2 class="blog-title">{{ blog.title }}</h2>
+  <p class="blog-content">{{ blog.content }}</p>
+  <p class="blog-author">By {{ blog.author }}</p>
+  <div class="vote-buttons">
+   <!-- <button (click)="upvote(blog)">UPVOTE({{blog.upvotes}})</button>
+    <button (click)="downvote(blog)">DOWNVOTE({{blog.downvotes}})</button> -->
   </div>
 </div>
 

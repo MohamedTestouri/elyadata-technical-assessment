@@ -1,13 +1,59 @@
+.blog-title {
+  font-size: 2.5rem;
+  margin: 2rem 0;
+}
+
+.blog-search {
+  padding: 0.5rem;
+  font-size: 1.2rem;
+  border-radius: 0.3rem;
+  border: 2px solid #ccc;
+}
+
+.blog-list {
+  margin-top: 2rem;
+}
+
 .blog-preview {
-  border: 1px solid;
-  padding: 10px;
+  background-color: #f8f8f8;
+  border-radius: 0.5rem;
+  padding: 2rem;
+  margin-bottom: 2rem;
 }
 
-.blog-preview.green {
-  border-color: green;
+.blog-preview h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
 }
 
-.blog-preview.red {
-  border-color: red;
+.blog-preview p {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
 }
 
+.vote-buttons button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 0.5rem;
+  border: none;
+  border-radius: 0.3rem;
+  margin-right: 1rem;
+}
+
+.vote-buttons button:hover {
+  background-color: #3e8e41;
+  cursor: pointer;
+}
+
+.read-more {
+  font-size: 1.2rem;
+  color: #007bff;
+  text-decoration: none;
+  display: inline-block;
+  margin-top: 1rem;
+}
+
+.read-more:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
